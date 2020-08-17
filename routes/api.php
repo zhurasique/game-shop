@@ -22,4 +22,7 @@ Route::get('categories', 'Api\CategoryController@index');
 Route::get('categories/{category}', 'Api\CategoryController@show');
 
 Route::get('platforms', 'Api\PlatformController@index');
-Route::get('platforms/{platform}', 'Api\PlatformController@show');
+Route::get('platforms/{id}', 'Api\PlatformController@show')->where('id', '[0-9]+');;
+Route::get('platforms/paginate', 'Api\PlatformController@paginate')->name('paginate');
+Route::post('platforms', 'Api\PlatformController@store');
+Route::delete('platforms/{id}', 'Api\PlatformController@destroy');

@@ -2,14 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f52b4b0a-5532-4f57-8334-3bae336b6ce7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../restshop/app/Http/Middleware/Authenticate.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../restshop/app/Http/Middleware/CheckForMaintenanceMode.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../restshop/app/Http/Middleware/EncryptCookies.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../restshop/app/Http/Middleware/RedirectIfAuthenticated.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../restshop/app/Http/Middleware/TrimStrings.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../restshop/app/Http/Middleware/TrustHosts.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../restshop/app/Http/Middleware/TrustProxies.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../restshop/app/Http/Middleware/VerifyCsrfToken.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/admin/FormCategory.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/admin/FormPlatform.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../datahub_front/.idea/datahub_front.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../datahub_front/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../datahub_front/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../datahub_front/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../datahub_front/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../datahub_front/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../datahub_front/static/css/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../datahub_front/static/img/bag.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../datahub_front/static/img/department-1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../datahub_front/static/img/login.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../datahub_front/static/img/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../datahub_front/static/img/logo_full.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react-pizza-html-master/public/js/app.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/loading.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/loading.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +27,13 @@
   <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -126,6 +141,7 @@
       <path value="$PROJECT_DIR$/vendor/symfony/error-handler" />
       <path value="$PROJECT_DIR$/vendor/symfony/http-foundation" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php80" />
+      <path value="$PROJECT_DIR$/vendor/laravel/ui" />
     </include_path>
   </component>
   <component name="ProjectId" id="1gEQx1lK5awsTKZGAqjc4Hms5Nb" />
@@ -138,7 +154,13 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../users" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\666\PhpstormProjects\shop\resources\js\components\admin" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -154,7 +176,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1597677515082</updated>
-      <workItem from="1597677516146" duration="4765000" />
+      <workItem from="1597677516146" duration="10585000" />
     </task>
     <servers />
   </component>
@@ -162,30 +184,34 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="690" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1597679275759">
+    <state x="707" y="321" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1597683098163">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1597679275759" />
-    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1597681518979">
+    <state x="707" y="321" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1597683098163" />
+    <state x="690" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1597688359107">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1597681518979" />
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1597677572224">
+    <state x="690" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1597688359107" />
+    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1597688820341">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1597677572224" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1597677572224">
+    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1597688820341" />
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1597686298416">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1597677572224" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1597677572224">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1597686298416" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1597686298416">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1597677572224" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1597677572224">
+    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1597686298416" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1597686298416">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1597677572224" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1597686298416" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1597686298416">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1597686298416" />
     <state x="730" y="242" key="NewPhpClassDialog" timestamp="1597677932775">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
