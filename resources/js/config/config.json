@@ -1,5 +1,6 @@
 [
     {
-        "platform_api" : "http://127.0.0.1:8000/api/platforms"
+        "platform_api" : "http://127.0.0.1:8000/api/platforms",
+        "category_api" : "http://127.0.0.1:8000/api/categories"
     }
 ]

@@ -4,13 +4,6 @@
             <h2>Platforms</h2>
         </div>
 
-        <div class="alert alert-success text-center" id="alert-success" role="alert">
-            <p v-text="alert_text"></p>
-        </div>
-        <div class="alert alert-danger text-center" id="alert-danger" role="alert">
-            <p v-text="alert_text"></p>
-        </div>
-
         <form>
             <div class="form-group">
                 <label for="name"><strong>Name:</strong></label>
@@ -33,8 +26,8 @@
             <tr v-for="platform in platforms" :key="platform.id">
                 <th v-text="platform.id"></th>
                 <td v-text="platform.name"></td>
-                <td class="text-center">
-<!--                    <button class="btn btn-sm btn-primary" @click="editPlatform(platform)">Edit</button>-->
+                <td class="text-right">
+                    <button class="btn btn-sm btn-primary" @click="editPlatform(platform)">Edit</button>
                     <button class="btn btn-sm btn-danger" @click="deletePlatform(platform)">Delete</button>
                 </td>
             </tr>
@@ -51,12 +44,15 @@
             </div>
         </div>
         <hr>
+
+        <form-popup :alert="alert"></form-popup>
     </div>
 </template>
 <script>
 
 import axios from "axios"
 import apiJson from "../../config/config.json"
+import FormPopups from "./FormPopups";
 
 export default {
     data: function(){
@@ -68,8 +64,12 @@ export default {
             current_page: 1,
             last_page: '',
             loading: true,
-            alert_text: ''
+            alert: ''
         }
+    },
+
+    components: {
+        'form-popup' : FormPopups
     },
 
     mounted(){
@@ -91,26 +91,47 @@ export default {
                     this.current_page = response.data['meta']['current_page'];
                     this.last_page = response.data['meta']['last_page'];
                     this.pageLoading();
-                }).
-            catch( error => {
-                console.log(error);
-            });
+                }).catch(error => {
+                    FormPopups.methods.showDangerAlert(this.alert = error);
+                }
+            );
         },
 
         savePlatform: function (){
             let formData = new FormData();
             formData.append("name", this.name);
 
-            axios({
-                url: this.platform_api,
-                data: formData,
-                method: 'POST',
-            }).then( response => {
-                this.name = '';
+            if(this.id){
+                formData.append("_method", "PUT");
 
-                this.loadPlatforms();
-                this.showSuccessAlert("Platform has been saved!");
-            });
+                axios({
+                    url: this.platform_api + "/" + this.id,
+                    data: formData,
+                    method: 'POST',
+                }).then(response => {
+                    this.name = '';
+
+                    this.loadPlatforms();
+                    FormPopups.methods.showSuccessAlert(this.alert = "Platform has been edited!");
+                }).catch(error => {
+                        FormPopups.methods.showDangerAlert(this.alert = error);
+                    }
+                );
+            }else {
+                axios({
+                    url: this.platform_api,
+                    data: formData,
+                    method: 'POST',
+                }).then(response => {
+                    this.name = '';
+
+                    this.loadPlatforms();
+                    FormPopups.methods.showSuccessAlert(this.alert = "Platform has been saved!");
+                }).catch(error => {
+                        FormPopups.methods.showDangerAlert(this.alert = error);
+                    }
+                );
+            }
         },
 
         deletePlatform: function (platform){
@@ -120,11 +141,16 @@ export default {
             })
                 .then( response => {
                     this.loadPlatforms();
-                    this.showDangerAlert("Platform has been deleted!");
+                    FormPopups.methods.showDangerAlert(this.alert = "Platform has been deleted!");
                 }).
             catch( error => {
-                console.log(error);
+                FormPopups.methods.showDangerAlert(this.alert = error);
             });
+        },
+
+        editPlatform: function (user){
+            this.id = user.id;
+            this.name = user.name;
         },
 
         incCurrentPage: function (){
@@ -142,26 +168,7 @@ export default {
             document.getElementById("subBtn").style.display = "unset";
             document.getElementById("pageBtn").style.display = "flex";
         },
+    },
 
-        showDangerAlert: function (text){
-            let alert = document.getElementById("alert-danger");
-            alert.style.display = "unset";
-            this.alert_text = text;
-
-            setTimeout(function (){
-                alert.style.display = "none";
-            },2000);
-        },
-
-        showSuccessAlert: function (text){
-            let alert = document.getElementById("alert-success");
-            alert.style.display = "unset";
-            this.alert_text = text;
-
-            setTimeout(function (){
-                alert.style.display = "none";
-            },2000);
-        },
-    }
 }
 </script>

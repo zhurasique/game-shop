@@ -7,8 +7,7 @@ use App\Http\Resources\PlatformResource;
 use App\Models\Platform;
 use Illuminate\Http\Request;
 
-class PlatformService
-{
+class PlatformService{
     public function index(){
         return PlatformResource::collection(Platform::all());
     }
@@ -27,6 +26,18 @@ class PlatformService
         ]);
 
         $platform = new Platform();
+        $platform->name = $request->name;
+
+        $platform->save();
+    }
+
+    public function update(Request $request, $id){
+        $request->validate([
+            'name' => 'unique:platforms|required|string|max:15|min:2'
+        ]);
+
+        $platform = Platform::find($id);
+
         $platform->name = $request->name;
 
         $platform->save();

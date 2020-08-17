@@ -1,0 +1,47 @@
+.borderless {
+    border-top: unset !important;
+}
+
+hr{
+    max-width: 700px;
+}
+
+table{
+    max-width: 1030px;
+    margin: auto;
+}
+
+#alert-danger{
+    display: none;
+    position: absolute;
+    top: 2%;
+    right: 46%;
+}
+
+#alert-success{
+    display: none;
+    position: absolute;
+    top: 2%;
+    right: 46%;
+}
+
+.loading {
+    position: fixed;
+    z-index: 9999;
+    height: 2em;
+    width: 2em;
+    overflow: visible;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+#subBtn{
+    display: none;
+}
+
+#pageBtn{
+    display: none;
+}

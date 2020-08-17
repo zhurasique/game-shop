@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Services\PlatformService;
 use Illuminate\Http\Request;
 
-class PlatformController extends Controller
-{
+class PlatformController extends Controller{
+
     private PlatformService $platformService;
     public function __construct(PlatformService $platformService){
         $this->platformService = $platformService;
@@ -27,6 +27,10 @@ class PlatformController extends Controller
 
     public function store(Request $request){
         $this->platformService->store($request);
+    }
+
+    public function update(Request $request, $id){
+        $this->platformService->update($request, $id);
     }
 
     public function destroy($id){

@@ -18,7 +18,7 @@ class CategoryResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'platform_id' => PlatformResource::make(Platform::find($this->platform_id)),
+            'platform' => PlatformResource::make(Platform::find($this->platform_id)),
         ];
     }
 }

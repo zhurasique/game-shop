@@ -19,10 +19,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('categories', 'Api\CategoryController@index');
-Route::get('categories/{category}', 'Api\CategoryController@show');
+Route::get('categories/{id}', 'Api\CategoryController@show')->where('id', '[0-9]+');
+Route::get('categories/paginate', 'Api\CategoryController@paginate')->name('paginate');
 
 Route::get('platforms', 'Api\PlatformController@index');
-Route::get('platforms/{id}', 'Api\PlatformController@show')->where('id', '[0-9]+');;
+Route::get('platforms/{id}', 'Api\PlatformController@show')->where('id', '[0-9]+');
 Route::get('platforms/paginate', 'Api\PlatformController@paginate')->name('paginate');
 Route::post('platforms', 'Api\PlatformController@store');
 Route::delete('platforms/{id}', 'Api\PlatformController@destroy');
+Route::put('platforms/{id}', 'Api\PlatformController@update');
