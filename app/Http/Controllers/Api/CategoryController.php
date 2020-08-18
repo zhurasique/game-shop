@@ -25,4 +25,7 @@ class CategoryController extends Controller{
         return $this->categoryService->show($id);
     }
 
+    public function getByPlatformId($id){
+        return $this->categoryService->getByPlatformId($id);
+    }
 }

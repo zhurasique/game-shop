@@ -4,48 +4,49 @@ namespace App\Services;
 
 
 use App\Http\Resources\PlatformResource;
+use App\Models\Category;
 use App\Models\Platform;
+use App\Repositories\CategoryRepository;
+use App\Repositories\PlatformRepository;
 use Illuminate\Http\Request;
 
 class PlatformService{
+
+    private PlatformRepository $platformRepo;
+    private CategoryRepository $categoryRepo;
+
+    public function __construct(PlatformRepository $platformRepo, CategoryRepository $categoryRepo){
+        $this->platformRepo = $platformRepo;
+        $this->categoryRepo = $categoryRepo;
+    }
+
     public function index(){
-        return PlatformResource::collection(Platform::all());
+        return PlatformResource::collection($this->platformRepo->all());
     }
 
     public function paginate(){
-        return PlatformResource::collection(Platform::orderBy('updated_at', 'desc')->paginate(4));
+        return PlatformResource::collection($this->platformRepo->orderByUpdate()->paginate(4));
     }
 
     public function show($id){
-        return PlatformResource::make(Platform::find($id));
+        return PlatformResource::make($this->platformRepo->getById($id));
     }
 
     public function store(Request $request){
-        $request->validate([
-            'name' => 'unique:platforms|required|string|max:15|min:2'
-        ]);
-
-        $platform = new Platform();
-        $platform->name = $request->name;
-
-        $platform->save();
+        $this->platformRepo->store($request);
     }
 
     public function update(Request $request, $id){
-        $request->validate([
-            'name' => 'unique:platforms|required|string|max:15|min:2'
-        ]);
-
-        $platform = Platform::find($id);
-
-        $platform->name = $request->name;
-
-        $platform->save();
+        $this->platformRepo->update($request, $id);
     }
 
     public function destroy($id){
-        $platform = Platform::find($id);
+        $platform = $this->platformRepo->getById($id);
 
+        $categories = $this->categoryRepo->getByPlatformId($id);
+
+        foreach ($categories as $category)
+            $category->delete();
         $platform->delete();
     }
 }

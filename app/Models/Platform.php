@@ -8,7 +8,7 @@ class Platform extends Model
 {
     protected $fillable = ['name'];
 
-    public function platform(){
+    public function category(){
         return $this->hasMany(Category::class);
     }
 }
