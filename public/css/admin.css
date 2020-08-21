@@ -38,10 +38,6 @@ table{
     right: 0;
 }
 
-#subBtn{
-    display: none;
-}
-
-#pageBtn{
+#category-page-btn, #category-sub-btn, #platform-page-btn, #platform-sub-btn{
     display: none;
 }

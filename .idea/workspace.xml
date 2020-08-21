@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f52b4b0a-5532-4f57-8334-3bae336b6ce7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/js/components/admin/FormCategory.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/admin/FormPlatform.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../datahub_front/.idea/datahub_front.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../datahub_front/.idea/misc.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../datahub_front/.idea/modules.xml" beforeDir="false" />
@@ -17,14 +15,24 @@
       <change beforePath="$PROJECT_DIR$/../datahub_front/static/img/logo.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../datahub_front/static/img/logo_full.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../react-pizza-html-master/public/js/app.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/loading.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/loading.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/CategoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repositories/CategoryRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/CategoryRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repositories/Interfaces/CategoryRepositoryInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/Interfaces/CategoryRepositoryInterface.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Services/CategoryService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/CategoryService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/admin.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/admin.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/admin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/FormCategory.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/FormCategory.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/FormPlatform.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/FormPlatform.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
@@ -37,7 +45,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -154,9 +162,10 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../users" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../laravel-todo-list" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
@@ -178,7 +187,13 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1597677515082</updated>
-      <workItem from="1597677516146" duration="19575000" />
+      <workItem from="1597677516146" duration="19676000" />
+      <workItem from="1597703867236" duration="2189000" />
+      <workItem from="1597766959425" duration="1022000" />
+      <workItem from="1597781181293" duration="5338000" />
+      <workItem from="1597849033970" duration="197000" />
+      <workItem from="1597926648486" duration="1523000" />
+      <workItem from="1598040580843" duration="3332000" />
     </task>
     <servers />
   </component>
@@ -190,38 +205,42 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="707" y="321" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1597683098163" />
-    <state x="690" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1597694798038">
+    <state x="765" y="202" key="#com.intellij.ide.util.MemberChooser" timestamp="1598042272358">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1597694798038" />
-    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1597688820341">
+    <state x="765" y="202" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1598042272358" />
+    <state x="690" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1598042295836">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1597688820341" />
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1597686298416">
+    <state x="690" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1598042295836" />
+    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1598044593429">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1597686298416" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1597686298416">
+    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1598044593429" />
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1597700941375">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1597686298416" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1597686298416">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1597700941375" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1597700941375">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1597686298416" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1597686298416">
+    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1597700941375" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1597700941375">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1597686298416" />
-    <state x="730" y="242" key="NewPhpClassDialog" timestamp="1597677932775">
+    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1597700941375" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1597700941375">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="730" y="242" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1597677932775" />
-    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1597677891296">
+    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1597700941375" />
+    <state x="730" y="242" key="NewPhpClassDialog" timestamp="1597784000324">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1597677891296" />
+    <state x="730" y="242" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1597784000324" />
+    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1597782740785">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1597782740785" />
     <state x="461" y="164" key="SettingsEditor" timestamp="1597691815723">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

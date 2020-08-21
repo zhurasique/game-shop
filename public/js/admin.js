@@ -1965,6 +1965,9 @@ var _config_config_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__
 //
 //
 //
+//
+//
+//
 
 
 
@@ -1972,6 +1975,7 @@ var _config_config_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__
   data: function data() {
     return {
       category_api: _config_config_json__WEBPACK_IMPORTED_MODULE_1__[0]['category_api'],
+      platform_api: _config_config_json__WEBPACK_IMPORTED_MODULE_1__[0]['platform_api'],
       platform: '',
       platforms: [],
       name: '',
@@ -1979,11 +1983,16 @@ var _config_config_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__
       categories: [],
       current_page: 1,
       last_page: '',
-      loading: true
+      loading: true,
+      alert: ''
     };
+  },
+  components: {
+    'form-popup': _FormPopups__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
   mounted: function mounted() {
     this.loadCategories();
+    this.loadPlatforms();
   },
   methods: {
     loadCategories: function loadCategories() {
@@ -2006,6 +2015,61 @@ var _config_config_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__
         console.log(error);
       });
     },
+    loadPlatforms: function loadPlatforms() {
+      var _this2 = this;
+
+      this.platforms = [];
+      axios__WEBPACK_IMPORTED_MODULE_0___default()({
+        method: "get",
+        url: this.platform_api
+      }).then(function (response) {
+        for (var i = 0; i < response.data['data'].length; i++) {
+          _this2.platforms.push(response.data['data'][i]);
+        }
+      })["catch"](function (error) {
+        _FormPopups__WEBPACK_IMPORTED_MODULE_2__["default"].methods.showDangerAlert(_this2.alert = error);
+      });
+    },
+    saveCategory: function saveCategory() {
+      var _this3 = this;
+
+      var formData = new FormData();
+      formData.append("name", this.name);
+      formData.append("platform_id", this.platform);
+
+      if (this.id) {
+        formData.append("_method", "PUT");
+        axios__WEBPACK_IMPORTED_MODULE_0___default()({
+          url: this.category_api + "/" + this.id,
+          data: formData,
+          method: 'POST'
+        }).then(function (response) {
+          _this3.name = '';
+
+          _this3.loadPlatforms();
+
+          _FormPopups__WEBPACK_IMPORTED_MODULE_2__["default"].methods.showSuccessAlert(_this3.alert = "Platform has been edited!");
+        })["catch"](function (error) {
+          _FormPopups__WEBPACK_IMPORTED_MODULE_2__["default"].methods.showDangerAlert(_this3.alert = error);
+        });
+      } else {
+        axios__WEBPACK_IMPORTED_MODULE_0___default()({
+          url: this.category_api,
+          data: formData,
+          method: 'POST'
+        }).then(function (response) {
+          _this3.name = '';
+          _this3.platform = '';
+
+          _this3.loadCategories();
+
+          _FormPopups__WEBPACK_IMPORTED_MODULE_2__["default"].methods.showSuccessAlert(_this3.alert = "Platform has been saved!");
+        })["catch"](function (error) {
+          console.log(error);
+          _FormPopups__WEBPACK_IMPORTED_MODULE_2__["default"].methods.showDangerAlert(_this3.alert = error);
+        });
+      }
+    },
     incCurrentPage: function incCurrentPage() {
       this.current_page++;
       this.loadCategories();
@@ -2016,8 +2080,8 @@ var _config_config_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__
     },
     pageLoading: function pageLoading() {
       this.loading = false;
-      document.getElementById("subBtn").style.display = "unset";
-      document.getElementById("pageBtn").style.display = "flex";
+      document.getElementById("category-sub-btn").style.display = "unset";
+      document.getElementById("category-page-btn").style.display = "flex";
     }
   }
 });
@@ -2164,6 +2228,7 @@ var _config_config_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__
 
           _FormPopups__WEBPACK_IMPORTED_MODULE_2__["default"].methods.showSuccessAlert(_this2.alert = "Platform has been saved!");
         })["catch"](function (error) {
+          console.log(error);
           _FormPopups__WEBPACK_IMPORTED_MODULE_2__["default"].methods.showDangerAlert(_this2.alert = error);
         });
       }
@@ -2196,8 +2261,8 @@ var _config_config_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__
     },
     pageLoading: function pageLoading() {
       this.loading = false;
-      document.getElementById("subBtn").style.display = "unset";
-      document.getElementById("pageBtn").style.display = "flex";
+      document.getElementById("platform-sub-btn").style.display = "unset";
+      document.getElementById("platform-page-btn").style.display = "flex";
     }
   }
 });
@@ -2456,152 +2521,187 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { class: { loading: _vm.loading } }, [
-    _c("form", [
-      _c("div", { staticClass: "form-group" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.name,
-              expression: "name"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: {
-            type: "text",
-            id: "name",
-            name: "name",
-            placeholder: "Multiplayer games",
-            required: ""
-          },
-          domProps: { value: _vm.name },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.name = $event.target.value
-            }
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group", attrs: { id: "country" } }, [
-        _c("strong", [_vm._v("Country:")]),
-        _vm._v(" "),
-        _c(
-          "select",
-          {
+  return _c(
+    "div",
+    { class: { loading: _vm.loading } },
+    [
+      _c("form", [
+        _c("div", { staticClass: "form-group" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("input", {
             directives: [
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.platform,
-                expression: "platform"
+                value: _vm.name,
+                expression: "name"
               }
             ],
             staticClass: "form-control",
+            attrs: {
+              type: "text",
+              id: "name",
+              name: "name",
+              placeholder: "Multiplayer games",
+              required: ""
+            },
+            domProps: { value: _vm.name },
             on: {
-              change: function($event) {
-                var $$selectedVal = Array.prototype.filter
-                  .call($event.target.options, function(o) {
-                    return o.selected
-                  })
-                  .map(function(o) {
-                    var val = "_value" in o ? o._value : o.value
-                    return val
-                  })
-                _vm.platform = $event.target.multiple
-                  ? $$selectedVal
-                  : $$selectedVal[0]
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.name = $event.target.value
               }
             }
-          },
-          _vm._l(_vm.platforms, function(platform) {
-            return _c("option", {
-              key: platform.id,
-              domProps: { value: platform, textContent: _vm._s(platform.name) }
-            })
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group", attrs: { id: "country" } }, [
+          _c("strong", [_vm._v("Platform:")]),
+          _vm._v(" "),
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.platform,
+                  expression: "platform"
+                }
+              ],
+              staticClass: "form-control",
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.platform = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                }
+              }
+            },
+            _vm._l(_vm.platforms, function(platform) {
+              return _c("option", {
+                key: platform.id,
+                domProps: {
+                  value: platform.id,
+                  textContent: _vm._s(platform.name)
+                }
+              })
+            }),
+            0
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "col-sm mt-3", attrs: { id: "category-sub-btn" } },
+        [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-block btn-success",
+              on: { click: _vm.saveCategory }
+            },
+            [_vm._v("SUBMIT CATEGORY")]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c("table", { staticClass: "table mt-4" }, [
+        _vm._m(1),
+        _vm._v(" "),
+        _c(
+          "tbody",
+          _vm._l(_vm.categories, function(category) {
+            return _c("tr", { key: category.id }, [
+              _c("th", {
+                staticClass: "text-center",
+                domProps: { textContent: _vm._s(category.id) }
+              }),
+              _vm._v(" "),
+              _c("td", {
+                staticClass: "text-center",
+                domProps: { textContent: _vm._s(category.name) }
+              }),
+              _vm._v(" "),
+              _c("td", {
+                staticClass: "text-center",
+                domProps: { textContent: _vm._s(category.platform.name) }
+              }),
+              _vm._v(" "),
+              _vm._m(2, true)
+            ])
           }),
           0
         )
-      ])
-    ]),
-    _vm._v(" "),
-    _vm._m(1),
-    _vm._v(" "),
-    _c("table", { staticClass: "table mt-4" }, [
-      _vm._m(2),
+      ]),
       _vm._v(" "),
       _c(
-        "tbody",
-        _vm._l(_vm.categories, function(category) {
-          return _c("tr", { key: category.id }, [
-            _c("th", { domProps: { textContent: _vm._s(category.id) } }),
-            _vm._v(" "),
-            _c("th", { domProps: { textContent: _vm._s(category.name) } }),
-            _vm._v(" "),
-            _c("td", {
-              domProps: { textContent: _vm._s(category.platform.name) }
-            }),
-            _vm._v(" "),
-            _vm._m(3, true)
+        "div",
+        {
+          staticClass: "row justify-content-center",
+          attrs: { id: "category-page-btn" }
+        },
+        [
+          _c("div", { staticClass: "col-sm-6 text-center" }, [
+            _c(
+              "div",
+              {
+                staticClass: "btn-group",
+                attrs: { role: "group", "aria-label": "Basic example" }
+              },
+              [
+                _vm.current_page !== 1
+                  ? _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-secondary",
+                        attrs: { type: "button" },
+                        on: { click: _vm.decCurrentPage }
+                      },
+                      [_vm._v("Previous")]
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                _c("button", {
+                  staticClass: "btn btn-outline-secondary",
+                  domProps: { textContent: _vm._s(_vm.current_page) }
+                }),
+                _vm._v(" "),
+                _vm.current_page !== _vm.last_page
+                  ? _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-secondary",
+                        attrs: { type: "button" },
+                        on: { click: _vm.incCurrentPage }
+                      },
+                      [_vm._v("Next")]
+                    )
+                  : _vm._e()
+              ]
+            )
           ])
-        }),
-        0
-      )
-    ]),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "row justify-content-center", attrs: { id: "pageBtn" } },
-      [
-        _c("div", { staticClass: "col-sm-6 text-center" }, [
-          _c(
-            "div",
-            {
-              staticClass: "btn-group",
-              attrs: { role: "group", "aria-label": "Basic example" }
-            },
-            [
-              _vm.current_page !== 1
-                ? _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-secondary",
-                      attrs: { type: "button" },
-                      on: { click: _vm.decCurrentPage }
-                    },
-                    [_vm._v("Previous")]
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              _c("button", {
-                staticClass: "btn btn-outline-secondary",
-                domProps: { textContent: _vm._s(_vm.current_page) }
-              }),
-              _vm._v(" "),
-              _vm.current_page !== _vm.last_page
-                ? _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-secondary",
-                      attrs: { type: "button" },
-                      on: { click: _vm.incCurrentPage }
-                    },
-                    [_vm._v("Next")]
-                  )
-                : _vm._e()
-            ]
-          )
-        ])
-      ]
-    )
-  ])
+        ]
+      ),
+      _vm._v(" "),
+      _c("hr"),
+      _vm._v(" "),
+      _c("form-popup", { attrs: { alert: _vm.alert } })
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function() {
@@ -2616,29 +2716,25 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-sm mt-5", attrs: { id: "subBtn" } }, [
-      _c("button", { staticClass: "btn btn-block btn-success" }, [
-        _vm._v("SUBMIT USER")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("thead", [
       _c("tr", [
-        _c("th", { staticClass: "borderless", attrs: { scope: "col" } }, [
-          _vm._v("ID")
-        ]),
+        _c(
+          "th",
+          { staticClass: "borderless text-center", attrs: { scope: "col" } },
+          [_vm._v("ID")]
+        ),
         _vm._v(" "),
-        _c("th", { staticClass: "borderless", attrs: { scope: "col" } }, [
-          _vm._v("Name")
-        ]),
+        _c(
+          "th",
+          { staticClass: "borderless text-center", attrs: { scope: "col" } },
+          [_vm._v("Name")]
+        ),
         _vm._v(" "),
-        _c("th", { staticClass: "borderless", attrs: { scope: "col" } }, [
-          _vm._v("Platform")
-        ])
+        _c(
+          "th",
+          { staticClass: "borderless text-center", attrs: { scope: "col" } },
+          [_vm._v("Platform")]
+        )
       ])
     ])
   },
@@ -2646,7 +2742,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("td", { staticClass: "text-center" }, [
+    return _c("td", { staticClass: "text-right" }, [
       _c("button", { staticClass: "btn btn-sm btn-primary" }, [_vm._v("Edit")]),
       _vm._v(" "),
       _c("button", { staticClass: "btn btn-sm btn-danger" }, [_vm._v("Delete")])
@@ -2714,16 +2810,20 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-sm mt-3", attrs: { id: "subBtn" } }, [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-block btn-success",
-            on: { click: _vm.savePlatform }
-          },
-          [_vm._v("SUBMIT PLATFORM")]
-        )
-      ]),
+      _c(
+        "div",
+        { staticClass: "col-sm mt-3", attrs: { id: "platform-sub-btn" } },
+        [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-block btn-success",
+              on: { click: _vm.savePlatform }
+            },
+            [_vm._v("SUBMIT PLATFORM")]
+          )
+        ]
+      ),
       _vm._v(" "),
       _c("table", { staticClass: "table mt-4" }, [
         _vm._m(2),
@@ -2732,9 +2832,15 @@ var render = function() {
           "tbody",
           _vm._l(_vm.platforms, function(platform) {
             return _c("tr", { key: platform.id }, [
-              _c("th", { domProps: { textContent: _vm._s(platform.id) } }),
+              _c("th", {
+                staticClass: "text-center",
+                domProps: { textContent: _vm._s(platform.id) }
+              }),
               _vm._v(" "),
-              _c("td", { domProps: { textContent: _vm._s(platform.name) } }),
+              _c("td", {
+                staticClass: "text-center",
+                domProps: { textContent: _vm._s(platform.name) }
+              }),
               _vm._v(" "),
               _c("td", { staticClass: "text-right" }, [
                 _c(
@@ -2771,7 +2877,10 @@ var render = function() {
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "row justify-content-center", attrs: { id: "pageBtn" } },
+        {
+          staticClass: "row justify-content-center",
+          attrs: { id: "platform-page-btn" }
+        },
         [
           _c("div", { staticClass: "col-sm-6 text-center" }, [
             _c(
@@ -2845,13 +2954,17 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("thead", [
       _c("tr", [
-        _c("th", { staticClass: "borderless", attrs: { scope: "col" } }, [
-          _vm._v("ID")
-        ]),
+        _c(
+          "th",
+          { staticClass: "borderless text-center", attrs: { scope: "col" } },
+          [_vm._v("ID")]
+        ),
         _vm._v(" "),
-        _c("th", { staticClass: "borderless", attrs: { scope: "col" } }, [
-          _vm._v("Name")
-        ])
+        _c(
+          "th",
+          { staticClass: "borderless text-center", attrs: { scope: "col" } },
+          [_vm._v("Name")]
+        )
       ])
     ])
   }
