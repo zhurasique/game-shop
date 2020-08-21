@@ -7,6 +7,7 @@ namespace App\Services;
 use App\Http\Resources\CategoryResource;
 use App\Models\Category;
 use App\Repositories\CategoryRepository;
+use Illuminate\Http\Request;
 
 class CategoryService{
 
@@ -30,5 +31,9 @@ class CategoryService{
 
     public function getByPlatformId($id){
         return CategoryResource::collection($this->categoryRepo->getByPlatformId($id));
+    }
+
+    public function store(Request $request){
+        $this->categoryRepo->store($request);
     }
 }

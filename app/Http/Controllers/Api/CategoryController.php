@@ -28,4 +28,8 @@ class CategoryController extends Controller{
     public function getByPlatformId($id){
         return $this->categoryService->getByPlatformId($id);
     }
+
+    public function store(Request $request){
+        $this->categoryService->store($request);
+    }
 }

@@ -11,21 +11,21 @@
             </div>
         </form>
 
-        <div class="col-sm mt-3" id="subBtn">
+        <div class="col-sm mt-3" id="platform-sub-btn">
             <button class="btn btn-block btn-success" @click="savePlatform">SUBMIT PLATFORM</button>
         </div>
 
         <table class="table mt-4">
             <thead>
             <tr>
-                <th scope="col" class="borderless">ID</th>
-                <th scope="col" class="borderless">Name</th>
+                <th scope="col" class="borderless text-center">ID</th>
+                <th scope="col" class="borderless text-center">Name</th>
             </tr>
             </thead>
             <tbody>
             <tr v-for="platform in platforms" :key="platform.id">
-                <th v-text="platform.id"></th>
-                <td v-text="platform.name"></td>
+                <th class="text-center" v-text="platform.id"></th>
+                <td class="text-center" v-text="platform.name"></td>
                 <td class="text-right">
                     <button class="btn btn-sm btn-primary" @click="editPlatform(platform)">Edit</button>
                     <button class="btn btn-sm btn-danger" @click="deletePlatform(platform)">Delete</button>
@@ -34,7 +34,7 @@
             </tbody>
         </table>
 
-        <div class="row justify-content-center" id="pageBtn">
+        <div class="row justify-content-center" id="platform-page-btn">
             <div class="col-sm-6 text-center">
                 <div class="btn-group" role="group" aria-label="Basic example">
                     <button type="button" class="btn btn-secondary" v-if="current_page !== 1" @click="decCurrentPage">Previous</button>
@@ -55,7 +55,7 @@ import apiJson from "../../config/config.json"
 import FormPopups from "./FormPopups";
 
 export default {
-    data: function(){
+    data: function() {
         return {
             platform_api: apiJson[0]['platform_api'],
             id: '',
@@ -72,21 +72,20 @@ export default {
         'form-popup' : FormPopups
     },
 
-    mounted(){
+    mounted() {
         this.loadPlatforms();
     },
 
     methods: {
-        loadPlatforms: function (){
+        loadPlatforms: function () {
             this.platforms = [];
             axios({
                 method: "get",
                 url: this.platform_api + "/paginate?page=" + this.current_page
             })
                 .then( response => {
-                    for(var i = 0; i < response.data['data'].length; i++){
+                    for(let i = 0; i < response.data['data'].length; i++)
                         this.platforms.push(response.data['data'][i]);
-                    }
 
                     this.current_page = response.data['meta']['current_page'];
                     this.last_page = response.data['meta']['last_page'];
@@ -97,7 +96,7 @@ export default {
             );
         },
 
-        savePlatform: function (){
+        savePlatform: function () {
             let formData = new FormData();
             formData.append("name", this.name);
 
@@ -128,13 +127,14 @@ export default {
                     this.loadPlatforms();
                     FormPopups.methods.showSuccessAlert(this.alert = "Platform has been saved!");
                 }).catch(error => {
+                    console.log(error)
                         FormPopups.methods.showDangerAlert(this.alert = error);
                     }
                 );
             }
         },
 
-        deletePlatform: function (platform){
+        deletePlatform: function (platform) {
             axios({
                 method: "delete",
                 url: this.platform_api + "/" + platform.id
@@ -148,25 +148,25 @@ export default {
             });
         },
 
-        editPlatform: function (user){
+        editPlatform: function (user) {
             this.id = user.id;
             this.name = user.name;
         },
 
-        incCurrentPage: function (){
+        incCurrentPage: function () {
             this.current_page++;
             this.loadPlatforms();
         },
 
-        decCurrentPage: function (){
+        decCurrentPage: function () {
             this.current_page--;
             this.loadPlatforms();
         },
 
-        pageLoading: function (){
+        pageLoading: function () {
             this.loading = false;
-            document.getElementById("subBtn").style.display = "unset";
-            document.getElementById("pageBtn").style.display = "flex";
+            document.getElementById("platform-sub-btn").style.display = "unset";
+            document.getElementById("platform-page-btn").style.display = "flex";
         },
     },
 
