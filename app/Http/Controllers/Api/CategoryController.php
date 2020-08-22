@@ -32,4 +32,12 @@ class CategoryController extends Controller{
     public function store(Request $request){
         $this->categoryService->store($request);
     }
+
+    public function update(Request $request, $id){
+        $this->categoryService->update($request, $id);
+    }
+
+    public function destroy($id){
+        $this->categoryService->destroy($id);
+    }
 }

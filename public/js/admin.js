@@ -2046,9 +2046,9 @@ var _config_config_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__
         }).then(function (response) {
           _this3.name = '';
 
-          _this3.loadPlatforms();
+          _this3.loadCategories();
 
-          _FormPopups__WEBPACK_IMPORTED_MODULE_2__["default"].methods.showSuccessAlert(_this3.alert = "Platform has been edited!");
+          _FormPopups__WEBPACK_IMPORTED_MODULE_2__["default"].methods.showSuccessAlert(_this3.alert = "Category has been edited!");
         })["catch"](function (error) {
           _FormPopups__WEBPACK_IMPORTED_MODULE_2__["default"].methods.showDangerAlert(_this3.alert = error);
         });
@@ -2063,12 +2063,32 @@ var _config_config_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__
 
           _this3.loadCategories();
 
-          _FormPopups__WEBPACK_IMPORTED_MODULE_2__["default"].methods.showSuccessAlert(_this3.alert = "Platform has been saved!");
+          _FormPopups__WEBPACK_IMPORTED_MODULE_2__["default"].methods.showSuccessAlert(_this3.alert = "Category has been saved!");
         })["catch"](function (error) {
           console.log(error);
           _FormPopups__WEBPACK_IMPORTED_MODULE_2__["default"].methods.showDangerAlert(_this3.alert = error);
         });
       }
+    },
+    deleteCategory: function deleteCategory(category) {
+      var _this4 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default()({
+        method: "delete",
+        url: this.category_api + "/" + category.id
+      }).then(function (response) {
+        _this4.loadCategories();
+
+        _FormPopups__WEBPACK_IMPORTED_MODULE_2__["default"].methods.showDangerAlert(_this4.alert = "Category has been deleted!");
+      })["catch"](function (error) {
+        _FormPopups__WEBPACK_IMPORTED_MODULE_2__["default"].methods.showDangerAlert(_this4.alert = error);
+      });
+    },
+    editCategory: function editCategory(category) {
+      this.id = category.id;
+      this.name = category.name;
+      console.log(category.platform);
+      this.platform = category.platform.id;
     },
     incCurrentPage: function incCurrentPage() {
       this.current_page++;
@@ -2640,7 +2660,33 @@ var render = function() {
                 domProps: { textContent: _vm._s(category.platform.name) }
               }),
               _vm._v(" "),
-              _vm._m(2, true)
+              _c("td", { staticClass: "text-right" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-sm btn-primary",
+                    on: {
+                      click: function($event) {
+                        return _vm.editCategory(category)
+                      }
+                    }
+                  },
+                  [_vm._v("Edit")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-sm btn-danger",
+                    on: {
+                      click: function($event) {
+                        return _vm.deleteCategory(category)
+                      }
+                    }
+                  },
+                  [_vm._v("Delete")]
+                )
+              ])
             ])
           }),
           0
@@ -2736,16 +2782,6 @@ var staticRenderFns = [
           [_vm._v("Platform")]
         )
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", { staticClass: "text-right" }, [
-      _c("button", { staticClass: "btn btn-sm btn-primary" }, [_vm._v("Edit")]),
-      _vm._v(" "),
-      _c("button", { staticClass: "btn btn-sm btn-danger" }, [_vm._v("Delete")])
     ])
   }
 ]

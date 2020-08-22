@@ -45,12 +45,4 @@ class PlatformRepository implements PlatformRepositoryInterface {
 
         $platform->save();
     }
-
-    public function destroy(Platform $platform, Category $categories){
-        foreach ($categories as $category){
-            $category->delete();
-        }
-
-        $platform->delete();
-    }
 }

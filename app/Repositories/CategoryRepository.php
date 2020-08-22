@@ -38,4 +38,18 @@ class CategoryRepository implements CategoryRepositoryInterface {
 
         $category->save();
     }
+
+    public function update(Request $request, $id){
+        $request->validate([
+            'name' => 'unique:platforms|required|string|max:15|min:2',
+            'platform_id' => 'required'
+        ]);
+
+        $category = $this->getById($id);
+
+        $category->name = $request->name;
+        $category->platform_id = $request->platform_id;
+
+        $category->save();
+    }
 }

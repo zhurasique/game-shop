@@ -36,4 +36,14 @@ class CategoryService{
     public function store(Request $request){
         $this->categoryRepo->store($request);
     }
+
+    public function update(Request $request, $id){
+        $this->categoryRepo->update($request, $id);
+    }
+
+    public function destroy($id){
+        $platform = $this->categoryRepo->getById($id);
+
+        $platform->delete();
+    }
 }

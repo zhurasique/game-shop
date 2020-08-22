@@ -32,8 +32,8 @@
                 <td class="text-center" v-text="category.name"></td>
                 <td class="text-center" v-text="category.platform.name"></td>
                 <td class="text-right">
-                    <button class="btn btn-sm btn-primary" >Edit</button>
-                    <button class="btn btn-sm btn-danger" >Delete</button>
+                    <button class="btn btn-sm btn-primary" @click="editCategory(category)">Edit</button>
+                    <button class="btn btn-sm btn-danger" @click="deleteCategory(category)">Delete</button>
                 </td>
             </tr>
             </tbody>
@@ -136,8 +136,8 @@ export default {
                 }).then(response => {
                     this.name = '';
 
-                    this.loadPlatforms();
-                    FormPopups.methods.showSuccessAlert(this.alert = "Platform has been edited!");
+                    this.loadCategories();
+                    FormPopups.methods.showSuccessAlert(this.alert = "Category has been edited!");
                 }).catch(error => {
                         FormPopups.methods.showDangerAlert(this.alert = error);
                     }
@@ -152,13 +152,34 @@ export default {
                     this.platform = '';
 
                     this.loadCategories();
-                    FormPopups.methods.showSuccessAlert(this.alert = "Platform has been saved!");
+                    FormPopups.methods.showSuccessAlert(this.alert = "Category has been saved!");
                 }).catch(error => {
                         console.log(error)
                         FormPopups.methods.showDangerAlert(this.alert = error);
                     }
                 );
             }
+        },
+
+        deleteCategory: function (category) {
+            axios({
+                method: "delete",
+                url: this.category_api + "/" + category.id
+            })
+                .then( response => {
+                    this.loadCategories();
+                    FormPopups.methods.showDangerAlert(this.alert = "Category has been deleted!");
+                }).
+            catch( error => {
+                FormPopups.methods.showDangerAlert(this.alert = error);
+            });
+        },
+
+        editCategory: function (category) {
+            this.id = category.id;
+            this.name = category.name;
+            console.log(category.platform);
+            this.platform = category.platform.id;
         },
 
         incCurrentPage: function () {

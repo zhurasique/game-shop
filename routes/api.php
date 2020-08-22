@@ -33,6 +33,8 @@ Route::namespace('Api')->prefix('categories')->group(function () {
     Route::get('/platform/{id}', 'CategoryController@getByPlatformId')->where('id', '[0-9]+');
     Route::get('/paginate', 'CategoryController@paginate')->name('paginate');
     Route::post('/', 'CategoryController@store');
+    Route::delete('/{id}', 'CategoryController@destroy');
+    Route::put('/{id}', 'CategoryController@update');
 });
 
 
