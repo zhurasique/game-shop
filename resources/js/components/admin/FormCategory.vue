@@ -1,5 +1,9 @@
 <template>
-    <div :class="{'loading': loading}">
+    <div :class="{'loading': loading}" class="mt-5">
+        <div class="text-center">
+            <h2>Categories</h2>
+        </div>
+
         <form>
             <div class="form-group">
                 <label for="name"><strong>Name:</strong></label>

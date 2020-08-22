@@ -45,7 +45,7 @@
         </div>
         <hr>
 
-        <form-popup :alert="alert"></form-popup>
+        <form-popup :alert="alerx"></form-popup>
     </div>
 </template>
 <script>
@@ -64,7 +64,7 @@ export default {
             current_page: 1,
             last_page: '',
             loading: true,
-            alert: ''
+            alerx: ''
         }
     },
 
@@ -111,7 +111,7 @@ export default {
                     this.name = '';
 
                     this.loadPlatforms();
-                    FormPopups.methods.showSuccessAlert(this.alert = "Platform has been edited!");
+                    FormPopups.methods.showSuccessAlert(this.alerx = "Platform has been edited!");
                 }).catch(error => {
                         FormPopups.methods.showDangerAlert(this.alert = error);
                     }
