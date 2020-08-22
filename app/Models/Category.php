@@ -11,4 +11,8 @@ class Category extends Model
     public function platform(){
         return $this->belongsTo(Platform::class);
     }
+
+    public function game(){
+        return $this->hasMany(CategoryInGame::class);
+    }
 }
