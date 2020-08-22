@@ -11,16 +11,9 @@ table{
     margin: auto;
 }
 
-#alert-danger{
+#alert-success, #alert-danger{
     display: none;
-    position: absolute;
-    top: 2%;
-    right: 46%;
-}
-
-#alert-success{
-    display: none;
-    position: absolute;
+    position: fixed;
     top: 2%;
     right: 46%;
 }

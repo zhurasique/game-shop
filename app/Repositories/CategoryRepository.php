@@ -28,7 +28,7 @@ class CategoryRepository implements CategoryRepositoryInterface {
 
     public function store(Request $request){
         $request->validate([
-            'name' => 'unique:platforms|required|string|max:15|min:2',
+            'name' => 'unique:categories|required|string|max:15|min:2',
             'platform_id' => 'required'
         ]);
 
@@ -41,7 +41,7 @@ class CategoryRepository implements CategoryRepositoryInterface {
 
     public function update(Request $request, $id){
         $request->validate([
-            'name' => 'unique:platforms|required|string|max:15|min:2',
+            'name' => 'unique:categories|required|string|max:15|min:2',
             'platform_id' => 'required'
         ]);
 

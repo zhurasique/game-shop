@@ -16,15 +16,12 @@
       <change beforePath="$PROJECT_DIR$/../datahub_front/static/img/logo_full.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../react-pizza-html-master/public/js/app.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/CategoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Category.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Repositories/CategoryRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/CategoryRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/Interfaces/CategoryRepositoryInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/Interfaces/CategoryRepositoryInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/Interfaces/PlatformRepositoryInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/Interfaces/PlatformRepositoryInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/PlatformRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/PlatformRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/CategoryService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/CategoryService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/admin.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/admin.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/admin.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/admin/FormCategory.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/FormCategory.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/FormPlatform.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/FormPlatform.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -161,14 +158,19 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../laravel-todo-list" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/database" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\666\PhpstormProjects\shop\database" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\666\PhpstormProjects\shop\database\migrations" />
+      <recent name="C:\Users\666\PhpstormProjects\shop\app\Models" />
       <recent name="C:\Users\666\PhpstormProjects\shop\resources\js\components\admin" />
     </key>
   </component>
@@ -194,7 +196,8 @@
       <workItem from="1597926648486" duration="1523000" />
       <workItem from="1598040580843" duration="3485000" />
       <workItem from="1598097248209" duration="601000" />
-      <workItem from="1598105512165" duration="2448000" />
+      <workItem from="1598105512165" duration="4332000" />
+      <workItem from="1598118026725" duration="1932000" />
     </task>
     <servers />
   </component>
@@ -234,14 +237,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1597700941375" />
-    <state x="730" y="242" key="NewPhpClassDialog" timestamp="1597784000324">
+    <state x="730" y="242" key="NewPhpClassDialog" timestamp="1598118737665">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="730" y="242" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1597784000324" />
-    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1597782740785">
+    <state x="730" y="242" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1598118737665" />
+    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1598118715649">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1597782740785" />
+    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1598118715649" />
     <state x="461" y="164" key="SettingsEditor" timestamp="1597691815723">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

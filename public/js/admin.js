@@ -1968,6 +1968,10 @@ var _config_config_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -2185,7 +2189,7 @@ var _config_config_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__
       current_page: 1,
       last_page: '',
       loading: true,
-      alert: ''
+      alerx: ''
     };
   },
   components: {
@@ -2232,7 +2236,7 @@ var _config_config_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__
 
           _this2.loadPlatforms();
 
-          _FormPopups__WEBPACK_IMPORTED_MODULE_2__["default"].methods.showSuccessAlert(_this2.alert = "Platform has been edited!");
+          _FormPopups__WEBPACK_IMPORTED_MODULE_2__["default"].methods.showSuccessAlert(_this2.alerx = "Platform has been edited!");
         })["catch"](function (error) {
           _FormPopups__WEBPACK_IMPORTED_MODULE_2__["default"].methods.showDangerAlert(_this2.alert = error);
         });
@@ -2543,11 +2547,13 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { class: { loading: _vm.loading } },
+    { staticClass: "mt-5", class: { loading: _vm.loading } },
     [
+      _vm._m(0),
+      _vm._v(" "),
       _c("form", [
         _c("div", { staticClass: "form-group" }, [
-          _vm._m(0),
+          _vm._m(1),
           _vm._v(" "),
           _c("input", {
             directives: [
@@ -2639,7 +2645,7 @@ var render = function() {
       ),
       _vm._v(" "),
       _c("table", { staticClass: "table mt-4" }, [
-        _vm._m(1),
+        _vm._m(2),
         _vm._v(" "),
         _c(
           "tbody",
@@ -2750,6 +2756,14 @@ var render = function() {
   )
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "text-center" }, [
+      _c("h2", [_vm._v("Categories")])
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -2962,7 +2976,7 @@ var render = function() {
       _vm._v(" "),
       _c("hr"),
       _vm._v(" "),
-      _c("form-popup", { attrs: { alert: _vm.alert } })
+      _c("form-popup", { attrs: { alert: _vm.alerx } })
     ],
     1
   )
