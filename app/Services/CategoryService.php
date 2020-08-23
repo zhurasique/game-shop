@@ -5,7 +5,6 @@ namespace App\Services;
 
 
 use App\Http\Resources\CategoryResource;
-use App\Models\Category;
 use App\Repositories\CategoryRepository;
 use Illuminate\Http\Request;
 

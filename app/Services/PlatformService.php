@@ -4,8 +4,6 @@ namespace App\Services;
 
 
 use App\Http\Resources\PlatformResource;
-use App\Models\Category;
-use App\Models\Platform;
 use App\Repositories\CategoryRepository;
 use App\Repositories\PlatformRepository;
 use Illuminate\Http\Request;

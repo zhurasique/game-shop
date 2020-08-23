@@ -16,12 +16,14 @@
       <change beforePath="$PROJECT_DIR$/../datahub_front/static/img/logo_full.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../react-pizza-html-master/public/js/app.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Category.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/CategoryRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/CategoryRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/admin.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/admin.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/admin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/FormCategory.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/FormCategory.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/FormPlatform.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/FormPlatform.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/GameController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/GameController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/GameResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/GameResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repositories/GameRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/GameRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repositories/Interfaces/GameRepositoryInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/Interfaces/GameRepositoryInterface.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Services/CategoryService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/CategoryService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Services/GameService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/GameService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Services/PlatformService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/PlatformService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -197,7 +199,8 @@
       <workItem from="1598040580843" duration="3485000" />
       <workItem from="1598097248209" duration="601000" />
       <workItem from="1598105512165" duration="4332000" />
-      <workItem from="1598118026725" duration="1932000" />
+      <workItem from="1598118026725" duration="2387000" />
+      <workItem from="1598192921429" duration="5615000" />
     </task>
     <servers />
   </component>
@@ -209,14 +212,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="707" y="321" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1597683098163" />
-    <state x="765" y="202" key="#com.intellij.ide.util.MemberChooser" timestamp="1598109394901">
+    <state x="765" y="202" key="#com.intellij.ide.util.MemberChooser" timestamp="1598200280472">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="765" y="202" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1598109394901" />
-    <state x="690" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1598042295836">
+    <state x="765" y="202" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1598200280472" />
+    <state x="690" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1598198225230">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1598042295836" />
+    <state x="690" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1598198225230" />
     <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1598044593429">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -237,14 +240,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1597700941375" />
-    <state x="730" y="242" key="NewPhpClassDialog" timestamp="1598118737665">
+    <state x="730" y="242" key="NewPhpClassDialog" timestamp="1598120209073">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="730" y="242" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1598118737665" />
-    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1598118715649">
+    <state x="730" y="242" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1598120209073" />
+    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1598120150674">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1598118715649" />
+    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1598120150674" />
     <state x="461" y="164" key="SettingsEditor" timestamp="1597691815723">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

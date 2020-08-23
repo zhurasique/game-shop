@@ -37,5 +37,13 @@ Route::namespace('Api')->prefix('categories')->group(function () {
     Route::put('/{id}', 'CategoryController@update');
 });
 
+Route::namespace('Api')->prefix('games')->group(function () {
+    Route::get('/', 'GameController@index');
+    Route::get('/{id}', 'GameController@show')->where('id', '[0-9]+');
+    Route::get('/paginate', 'GameController@paginate')->name('paginate');
+    Route::post('/', 'GameController@store');
+    Route::delete('/{id}', 'GameController@destroy');
+    Route::put('/{id}', 'GameController@update');
+});
 
 
