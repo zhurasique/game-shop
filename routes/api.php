@@ -46,4 +46,8 @@ Route::namespace('Api')->prefix('games')->group(function () {
     Route::put('/{id}', 'GameController@update');
 });
 
+Route::namespace('Api')->prefix('categories_in_games')->group(function () {
+    Route::get('/category/{id}', 'CategoryInGameController@getByCategoryId')->where('id', '[0-9]+');
+    Route::get('/game/{id}', 'CategoryInGameController@getByGameId')->where('id', '[0-9]+');
+});
 

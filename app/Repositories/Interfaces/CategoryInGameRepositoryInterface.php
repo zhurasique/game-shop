@@ -4,7 +4,8 @@
 namespace App\Repositories\Interfaces;
 
 
-interface CategoryInGameRepositoryInterface
-{
+interface CategoryInGameRepositoryInterface{
+    public function getByCategoryId($id);
 
+    public function getByGameId($id);
 }
