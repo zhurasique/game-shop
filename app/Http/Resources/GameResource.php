@@ -2,6 +2,8 @@
 
 namespace App\Http\Resources;
 
+use App\Models\CategoryInGame;
+use App\Models\Game;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class GameResource extends JsonResource
@@ -17,7 +19,8 @@ class GameResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'price' => $this->price
+            'price' => $this->price,
+            'category' => CategoryInGame::where('game_id', $this->id)->get('category_id')
         ];
     }
 }

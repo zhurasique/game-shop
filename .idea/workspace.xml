@@ -16,12 +16,9 @@
       <change beforePath="$PROJECT_DIR$/../datahub_front/static/img/logo_full.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../react-pizza-html-master/public/js/app.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/CategoryInGameController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/CategoryInGameController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/CategoryInGameResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/CategoryInGameResource.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/CategoryInGameRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/CategoryInGameRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/Interfaces/CategoryInGameRepositoryInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/Interfaces/CategoryInGameRepositoryInterface.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/GameResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/GameResource.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Services/CategoryInGameService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/CategoryInGameService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_08_22_180109_create_categories_in_games_table.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -200,7 +197,9 @@
       <workItem from="1598105512165" duration="4332000" />
       <workItem from="1598118026725" duration="2387000" />
       <workItem from="1598192921429" duration="5783000" />
-      <workItem from="1598202844959" duration="2789000" />
+      <workItem from="1598202844959" duration="2905000" />
+      <workItem from="1598207637300" duration="1724000" />
+      <workItem from="1598221703655" duration="370000" />
     </task>
     <servers />
   </component>
@@ -208,6 +207,10 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="586" y="198" key="#Inspections" timestamp="1598209256740">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="586" y="198" key="#Inspections/0.0.1920.1040@0.0.1920.1040" timestamp="1598209256740" />
     <state x="707" y="321" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1597683098163">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -216,10 +219,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="765" y="202" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1598204165476" />
-    <state x="690" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1598204439421">
+    <state x="690" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1598208753109">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1598204439421" />
+    <state x="690" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1598208753109" />
     <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1598044593429">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -252,10 +255,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="164" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1597691815723" />
-    <state x="666" y="224" width="587" height="592" key="find.popup" timestamp="1598205284038">
+    <state x="666" y="224" width="587" height="592" key="find.popup" timestamp="1598207783602">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="666" y="224" width="587" height="592" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1598205284038" />
+    <state x="666" y="224" width="587" height="592" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1598207783602" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1598045624840">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
