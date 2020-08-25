@@ -20,4 +20,12 @@ class CategoryInGameController extends Controller{
     public function getByGameId($id){
         return $this->categoryInGameService->getByGameId($id);
     }
+
+    public function store(Request $request){
+        $this->categoryInGameService->store($request);
+    }
+
+    public function destroy($id){
+        $this->categoryInGameService->destroy($id);
+    }
 }
