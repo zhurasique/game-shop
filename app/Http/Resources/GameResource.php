@@ -3,7 +3,6 @@
 namespace App\Http\Resources;
 
 use App\Models\CategoryInGame;
-use App\Models\Game;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class GameResource extends JsonResource
@@ -20,7 +19,12 @@ class GameResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'price' => $this->price,
-            'category' => CategoryInGame::where('game_id', $this->id)->get('category_id')
+            'category' => CategoryResource::collection(
+                                    CategoryInGame::select()
+                                    ->join('categories', 'category_in_games.category_id', '=', 'categories.id')
+                                    ->where('category_in_games.game_id', $this->id)
+                                    ->get()
+            )
         ];
     }
 }
