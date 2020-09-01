@@ -25,6 +25,10 @@
     <form-category></form-category>
 </div>
 
+<div class="container mt-3" id="form-game">
+    <form-game></form-game>
+</div>
+
 <script src="{{ mix('js/app.js') }}"></script>
 <script src="{{ mix('js/admin.js') }}"></script>
 

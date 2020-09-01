@@ -31,6 +31,6 @@ table{
     right: 0;
 }
 
-#category-page-btn, #category-sub-btn, #platform-page-btn, #platform-sub-btn{
+#category-page-btn, #category-sub-btn, #platform-page-btn, #platform-sub-btn, #game-page-btn, #game-sub-btn{
     display: none;
 }

@@ -1,6 +1,7 @@
 [
     {
         "platform_api" : "http://127.0.0.1:8000/api/platforms",
-        "category_api" : "http://127.0.0.1:8000/api/categories"
+        "category_api" : "http://127.0.0.1:8000/api/categories",
+        "game_api" : "http://127.0.0.1:8000/api/games"
     }
 ]
