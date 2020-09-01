@@ -14,4 +14,6 @@ interface CategoryInGameRepositoryInterface{
     public function getByGameId($id);
 
     public function store(Request $request);
+
+    public function getByIds($game_id, $category_id);
 }

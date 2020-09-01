@@ -75,7 +75,6 @@ export default {
 
     mounted() {
         this.loadPlatforms();
-        this.test();
     },
 
     methods: {

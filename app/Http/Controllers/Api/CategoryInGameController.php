@@ -28,4 +28,8 @@ class CategoryInGameController extends Controller{
     public function destroy($id){
         $this->categoryInGameService->destroy($id);
     }
+
+    public function destroyByIds($game_id, $category_id){
+        $this->categoryInGameService->destroyByIds($game_id, $category_id);
+    }
 }

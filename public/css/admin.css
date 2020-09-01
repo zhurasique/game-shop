@@ -34,3 +34,17 @@ table{
 #category-page-btn, #category-sub-btn, #platform-page-btn, #platform-sub-btn, #game-page-btn, #game-sub-btn{
     display: none;
 }
+
+.category-in-game{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.category-in-game p{
+    margin-bottom: 0;
+}
+
+.category-in-game button{
+    margin-left: 10px;
+}

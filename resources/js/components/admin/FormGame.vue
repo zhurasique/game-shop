@@ -1,7 +1,7 @@
 <template>
-    <div :class="{'loading': loading}">
+    <div :class="{'loading': loading}" class="mt-6">
         <div class="text-center">
-            <h2>Platforms</h2>
+            <h2>Games</h2>
         </div>
 
         <form>
@@ -34,7 +34,12 @@
                 <th class="text-center" v-text="game.id"></th>
                 <td class="text-center" v-text="game.name"></td>
                 <td class="text-center" v-text="game.price"></td>
-                <td class="text-center" v-text="game.category[0]"></td>
+                <td class="text-center">
+                    <div v-for="category in game.category" :key="category.id" class="category-in-game">
+                        <p v-text="category.name"></p>
+                        <button class="btn btn-sm btn-danger" @click="deleteGameCategory(game, category)">x</button>
+                    </div>
+                </td>
                 <td class="text-right">
                     <button class="btn btn-sm btn-primary" @click="editGame(game)">Edit</button>
                     <button class="btn btn-sm btn-danger" @click="deleteGame(game)">Delete</button>
@@ -65,6 +70,7 @@ export default {
     data: function() {
         return {
             game_api: apiJson[0]['game_api'],
+            categoryInGame_api: apiJson[0]['categoryInGame_api'],
             id: '',
             name: '',
             price: '',
@@ -115,7 +121,7 @@ export default {
                     this.name = '';
                     this.price = '';
 
-                    this.loadPlatforms();
+                    this.loadGames();
                     // FormPopups.methods.showSuccessAlert(this.alert = "Platform has been edited!");
                 }).catch(error => {
                         // FormPopups.methods.showDangerAlert(this.alert = error);
@@ -129,7 +135,7 @@ export default {
                 }).then(response => {
                     this.name = '';
 
-                    this.loadPlatforms();
+                    this.loadGames();
                     // FormPopups.methods.showSuccessAlert(this.alert = "Platform has been saved!");
                 }).catch(error => {
                         console.log(error)
@@ -139,13 +145,27 @@ export default {
             }
         },
 
-        deleteGame: function (platform) {
+        deleteGame: function (game) {
             axios({
                 method: "delete",
-                url: this.game_api + "/" + platform.id
+                url: this.game_api + "/" + game.id
             })
                 .then( response => {
-                    this.loadPlatforms();
+                    this.loadGames();
+                    // FormPopups.methods.showDangerAlert(this.alert = "Platform has been deleted!");
+                }).
+            catch( error => {
+                // FormPopups.methods.showDangerAlert(this.alert = error);
+            });
+        },
+
+        deleteGameCategory: function (game, category){
+            axios({
+                method: "delete",
+                url: this.categoryInGame_api + "/game/" + game.id + "/category/" + category.id
+            })
+                .then( response => {
+                    this.loadGames();
                     // FormPopups.methods.showDangerAlert(this.alert = "Platform has been deleted!");
                 }).
             catch( error => {

@@ -1,5 +1,5 @@
 <template>
-    <div :class="{'loading': loading}" class="mt-5">
+    <div :class="{'loading': loading}" class="mt-6">
         <div class="text-center">
             <h2>Categories</h2>
         </div>

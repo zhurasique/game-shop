@@ -31,4 +31,8 @@ class CategoryInGameService{
 
         $categoryInGame->delete();;
     }
+
+    public function destroyByIds($game_id, $category_id){
+        $this->destroy($this->categoryInGameRepo->getByIds($game_id, $category_id)->id);
+    }
 }

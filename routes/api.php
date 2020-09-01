@@ -51,5 +51,7 @@ Route::namespace('Api')->prefix('categories_in_games')->group(function () {
     Route::get('/game/{id}', 'CategoryInGameController@getByGameId')->where('id', '[0-9]+');
     Route::post('/', 'CategoryInGameController@store');
     Route::delete('/{id}', 'CategoryInGameController@destroy');
+    Route::delete('/game/{game_id}/category/{category_id}', 'CategoryInGameController@destroyByIds')
+        ->where('game_id', '[0-9]+')->where('category_id', '[0-9]+');
 });
 

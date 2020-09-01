@@ -2183,12 +2183,18 @@ var _config_config_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       game_api: _config_config_json__WEBPACK_IMPORTED_MODULE_1__[0]['game_api'],
+      categoryInGame_api: _config_config_json__WEBPACK_IMPORTED_MODULE_1__[0]['categoryInGame_api'],
       id: '',
       name: '',
       price: '',
@@ -2238,7 +2244,7 @@ var _config_config_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__
           _this2.name = '';
           _this2.price = '';
 
-          _this2.loadPlatforms(); // FormPopups.methods.showSuccessAlert(this.alert = "Platform has been edited!");
+          _this2.loadGames(); // FormPopups.methods.showSuccessAlert(this.alert = "Platform has been edited!");
 
         })["catch"](function (error) {// FormPopups.methods.showDangerAlert(this.alert = error);
         });
@@ -2250,21 +2256,33 @@ var _config_config_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__
         }).then(function (response) {
           _this2.name = '';
 
-          _this2.loadPlatforms(); // FormPopups.methods.showSuccessAlert(this.alert = "Platform has been saved!");
+          _this2.loadGames(); // FormPopups.methods.showSuccessAlert(this.alert = "Platform has been saved!");
 
         })["catch"](function (error) {
           console.log(error); // FormPopups.methods.showDangerAlert(this.alert = error);
         });
       }
     },
-    deleteGame: function deleteGame(platform) {
+    deleteGame: function deleteGame(game) {
       var _this3 = this;
 
       axios__WEBPACK_IMPORTED_MODULE_0___default()({
         method: "delete",
-        url: this.game_api + "/" + platform.id
+        url: this.game_api + "/" + game.id
       }).then(function (response) {
-        _this3.loadPlatforms(); // FormPopups.methods.showDangerAlert(this.alert = "Platform has been deleted!");
+        _this3.loadGames(); // FormPopups.methods.showDangerAlert(this.alert = "Platform has been deleted!");
+
+      })["catch"](function (error) {// FormPopups.methods.showDangerAlert(this.alert = error);
+      });
+    },
+    deleteGameCategory: function deleteGameCategory(game, category) {
+      var _this4 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default()({
+        method: "delete",
+        url: this.categoryInGame_api + "/game/" + game.id + "/category/" + category.id
+      }).then(function (response) {
+        _this4.loadGames(); // FormPopups.methods.showDangerAlert(this.alert = "Platform has been deleted!");
 
       })["catch"](function (error) {// FormPopups.methods.showDangerAlert(this.alert = error);
       });
@@ -2378,7 +2396,6 @@ var _config_config_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__
   },
   mounted: function mounted() {
     this.loadPlatforms();
-    this.test();
   },
   methods: {
     loadPlatforms: function loadPlatforms() {
@@ -2729,7 +2746,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "mt-5", class: { loading: _vm.loading } },
+    { staticClass: "mt-6", class: { loading: _vm.loading } },
     [
       _vm._m(0),
       _vm._v(" "),
@@ -3002,7 +3019,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { class: { loading: _vm.loading } }, [
+  return _c("div", { staticClass: "mt-6", class: { loading: _vm.loading } }, [
     _vm._m(0),
     _vm._v(" "),
     _c("form", [
@@ -3104,10 +3121,35 @@ var render = function() {
               domProps: { textContent: _vm._s(game.price) }
             }),
             _vm._v(" "),
-            _c("td", {
-              staticClass: "text-center",
-              domProps: { textContent: _vm._s(game.category[0]) }
-            }),
+            _c(
+              "td",
+              { staticClass: "text-center" },
+              _vm._l(game.category, function(category) {
+                return _c(
+                  "div",
+                  { key: category.id, staticClass: "category-in-game" },
+                  [
+                    _c("p", {
+                      domProps: { textContent: _vm._s(category.name) }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-sm btn-danger",
+                        on: {
+                          click: function($event) {
+                            return _vm.deleteGameCategory(game, category)
+                          }
+                        }
+                      },
+                      [_vm._v("x")]
+                    )
+                  ]
+                )
+              }),
+              0
+            ),
             _vm._v(" "),
             _c("td", { staticClass: "text-right" }, [
               _c(
@@ -3200,7 +3242,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "text-center" }, [
-      _c("h2", [_vm._v("Platforms")])
+      _c("h2", [_vm._v("Games")])
     ])
   },
   function() {
@@ -3937,7 +3979,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! exports provided: 0, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("[{\"platform_api\":\"http://127.0.0.1:8000/api/platforms\",\"category_api\":\"http://127.0.0.1:8000/api/categories\",\"game_api\":\"http://127.0.0.1:8000/api/games\"}]");
+module.exports = JSON.parse("[{\"platform_api\":\"http://127.0.0.1:8000/api/platforms\",\"category_api\":\"http://127.0.0.1:8000/api/categories\",\"game_api\":\"http://127.0.0.1:8000/api/games\",\"categoryInGame_api\":\"http://127.0.0.1:8000/api/categories_in_games\"}]");
 
 /***/ }),
 

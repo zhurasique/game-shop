@@ -34,4 +34,8 @@ class CategoryInGameRepository implements CategoryInGameRepositoryInterface {
 
         $categoryInGame->save();
     }
+
+    public function getByIds($game_id, $category_id){
+        return CategoryInGame::where('game_id', $game_id)->where('category_id', $category_id)->first();
+    }
 }
