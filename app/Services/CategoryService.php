@@ -11,9 +11,11 @@ use Illuminate\Http\Request;
 class CategoryService{
 
     private CategoryRepository $categoryRepo;
+    private CategoryInGameService $categoryInGameService;
 
-    public function __construct(CategoryRepository $categoryRepo){
+    public function __construct(CategoryRepository $categoryRepo, CategoryInGameService $categoryInGameService){
         $this->categoryRepo = $categoryRepo;
+        $this->categoryInGameService = $categoryInGameService;
     }
 
     public function index(){
@@ -43,6 +45,10 @@ class CategoryService{
     public function destroy($id){
         $platform = $this->categoryRepo->getById($id);
 
+        $categoriesInGame = $this->categoryInGameService->getByCategoryId($id);
+
+        foreach ($categoriesInGame as $item)
+            $this->categoryInGameService->destroy($item->id);
         $platform->delete();
     }
 }

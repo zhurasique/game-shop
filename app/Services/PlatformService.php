@@ -4,18 +4,17 @@ namespace App\Services;
 
 
 use App\Http\Resources\PlatformResource;
-use App\Repositories\CategoryRepository;
 use App\Repositories\PlatformRepository;
 use Illuminate\Http\Request;
 
 class PlatformService{
 
     private PlatformRepository $platformRepo;
-    private CategoryRepository $categoryRepo;
+    private CategoryService $categoryService;
 
-    public function __construct(PlatformRepository $platformRepo, CategoryRepository $categoryRepo){
+    public function __construct(PlatformRepository $platformRepo, CategoryService $categoryService){
         $this->platformRepo = $platformRepo;
-        $this->categoryRepo = $categoryRepo;
+        $this->categoryService = $categoryService;
     }
 
     public function index(){
@@ -41,10 +40,10 @@ class PlatformService{
     public function destroy($id){
         $platform = $this->platformRepo->getById($id);
 
-        $categories = $this->categoryRepo->getByPlatformId($id);
+        $categories = $this->categoryService->getByPlatformId($id);
 
         foreach ($categories as $category)
-            $category->delete();
+            $this->categoryService->destroy($category->id);
         $platform->delete();
     }
 }
