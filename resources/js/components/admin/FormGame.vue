@@ -35,9 +35,14 @@
                 <td class="text-center" v-text="game.name"></td>
                 <td class="text-center" v-text="game.price"></td>
                 <td class="text-center">
-                    <div v-for="category in game.category" :key="category.id" class="category-in-game">
-                        <p v-text="category.name"></p>
-                        <button class="btn btn-sm btn-danger" @click="deleteGameCategory(game, category)">x</button>
+                    <div id="categories">
+                        <div v-for="category in game.category" :key="category.id" class="category-in-game">
+                            <p v-text="category.name"></p>
+                            <button class="btn btn-sm btn-danger" @click="deleteGameCategory(game, category)">x</button>
+                        </div>
+                    </div>
+                    <div class="add-category">
+                        <button class="btn btn-sm btn-success" @click="addCategoryFields">+</button>
                     </div>
                 </td>
                 <td class="text-right">
@@ -75,6 +80,8 @@ export default {
             name: '',
             price: '',
             games: [],
+            categories: [],
+            category: '',
             current_page: 1,
             last_page: '',
             loading: true,
@@ -177,6 +184,26 @@ export default {
             this.id = game.id;
             this.name = game.name;
             this.price = game.price;
+        },
+
+        addCategoryFields: function (){
+            let tag = document.createElement("div");
+            tag.setAttribute("id", "category")
+
+            let select = document.createElement("select");
+            select.setAttribute("class", "form-control form-control-sm");
+            select.setAttribute("v-model", "category");
+
+            let button = document.createElement("button");
+            button.innerText = "✔";
+            button.setAttribute("class", "btn btn-sm btn-secondary")
+
+            tag.appendChild(button);
+            tag.appendChild(select);
+
+
+            let element = document.getElementById("categories");
+            element.appendChild(tag);
         },
 
         incCurrentPage: function () {

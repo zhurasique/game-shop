@@ -39,6 +39,7 @@ table{
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    margin-bottom: 5px;
 }
 
 .category-in-game p{
@@ -47,4 +48,22 @@ table{
 
 .category-in-game button{
     margin-left: 10px;
+}
+
+.add-category{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#categories div{
+    display: flex;
+    text-align: center;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+#categories #category button{
+    margin-right: 5px;
 }

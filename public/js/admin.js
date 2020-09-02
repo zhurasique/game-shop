@@ -2188,6 +2188,11 @@ var _config_config_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2199,6 +2204,8 @@ var _config_config_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__
       name: '',
       price: '',
       games: [],
+      categories: [],
+      category: '',
       current_page: 1,
       last_page: '',
       loading: true
@@ -2291,6 +2298,20 @@ var _config_config_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__
       this.id = game.id;
       this.name = game.name;
       this.price = game.price;
+    },
+    addCategoryFields: function addCategoryFields() {
+      var tag = document.createElement("div");
+      tag.setAttribute("id", "category");
+      var select = document.createElement("select");
+      select.setAttribute("class", "form-control form-control-sm");
+      select.setAttribute("v-model", "category");
+      var button = document.createElement("button");
+      button.innerText = "✔";
+      button.setAttribute("class", "btn btn-sm btn-secondary");
+      tag.appendChild(button);
+      tag.appendChild(select);
+      var element = document.getElementById("categories");
+      element.appendChild(tag);
     },
     incCurrentPage: function incCurrentPage() {
       this.current_page++;
@@ -3121,35 +3142,48 @@ var render = function() {
               domProps: { textContent: _vm._s(game.price) }
             }),
             _vm._v(" "),
-            _c(
-              "td",
-              { staticClass: "text-center" },
-              _vm._l(game.category, function(category) {
-                return _c(
-                  "div",
-                  { key: category.id, staticClass: "category-in-game" },
-                  [
-                    _c("p", {
-                      domProps: { textContent: _vm._s(category.name) }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-sm btn-danger",
-                        on: {
-                          click: function($event) {
-                            return _vm.deleteGameCategory(game, category)
+            _c("td", { staticClass: "text-center" }, [
+              _c(
+                "div",
+                { attrs: { id: "categories" } },
+                _vm._l(game.category, function(category) {
+                  return _c(
+                    "div",
+                    { key: category.id, staticClass: "category-in-game" },
+                    [
+                      _c("p", {
+                        domProps: { textContent: _vm._s(category.name) }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-sm btn-danger",
+                          on: {
+                            click: function($event) {
+                              return _vm.deleteGameCategory(game, category)
+                            }
                           }
-                        }
-                      },
-                      [_vm._v("x")]
-                    )
-                  ]
+                        },
+                        [_vm._v("x")]
+                      )
+                    ]
+                  )
+                }),
+                0
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "add-category" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-sm btn-success",
+                    on: { click: _vm.addCategoryFields }
+                  },
+                  [_vm._v("+")]
                 )
-              }),
-              0
-            ),
+              ])
+            ]),
             _vm._v(" "),
             _c("td", { staticClass: "text-right" }, [
               _c(
