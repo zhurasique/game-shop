@@ -2193,6 +2193,10 @@ var _config_config_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2200,6 +2204,7 @@ var _config_config_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__
     return {
       game_api: _config_config_json__WEBPACK_IMPORTED_MODULE_1__[0]['game_api'],
       categoryInGame_api: _config_config_json__WEBPACK_IMPORTED_MODULE_1__[0]['categoryInGame_api'],
+      category_api: _config_config_json__WEBPACK_IMPORTED_MODULE_1__[0]['category_api'],
       id: '',
       name: '',
       price: '',
@@ -2213,6 +2218,7 @@ var _config_config_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__
   },
   mounted: function mounted() {
     this.loadGames();
+    this.loadCategories();
   },
   methods: {
     loadGames: function loadGames() {
@@ -2234,8 +2240,23 @@ var _config_config_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__
       })["catch"](function (error) {// FormPopups.methods.showDangerAlert(this.alert = error);
       });
     },
-    saveGame: function saveGame() {
+    loadCategories: function loadCategories() {
       var _this2 = this;
+
+      this.categories = [];
+      axios__WEBPACK_IMPORTED_MODULE_0___default()({
+        method: "get",
+        url: this.category_api
+      }).then(function (response) {
+        for (var i = 0; i < response.data['data'].length; i++) {
+          _this2.categories.push(response.data['data'][i]);
+        }
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    saveGame: function saveGame() {
+      var _this3 = this;
 
       var formData = new FormData();
       formData.append("name", this.name);
@@ -2248,10 +2269,10 @@ var _config_config_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__
           data: formData,
           method: 'POST'
         }).then(function (response) {
-          _this2.name = '';
-          _this2.price = '';
+          _this3.name = '';
+          _this3.price = '';
 
-          _this2.loadGames(); // FormPopups.methods.showSuccessAlert(this.alert = "Platform has been edited!");
+          _this3.loadGames(); // FormPopups.methods.showSuccessAlert(this.alert = "Platform has been edited!");
 
         })["catch"](function (error) {// FormPopups.methods.showDangerAlert(this.alert = error);
         });
@@ -2261,9 +2282,9 @@ var _config_config_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__
           data: formData,
           method: 'POST'
         }).then(function (response) {
-          _this2.name = '';
+          _this3.name = '';
 
-          _this2.loadGames(); // FormPopups.methods.showSuccessAlert(this.alert = "Platform has been saved!");
+          _this3.loadGames(); // FormPopups.methods.showSuccessAlert(this.alert = "Platform has been saved!");
 
         })["catch"](function (error) {
           console.log(error); // FormPopups.methods.showDangerAlert(this.alert = error);
@@ -2271,25 +2292,25 @@ var _config_config_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__
       }
     },
     deleteGame: function deleteGame(game) {
-      var _this3 = this;
+      var _this4 = this;
 
       axios__WEBPACK_IMPORTED_MODULE_0___default()({
         method: "delete",
         url: this.game_api + "/" + game.id
       }).then(function (response) {
-        _this3.loadGames(); // FormPopups.methods.showDangerAlert(this.alert = "Platform has been deleted!");
+        _this4.loadGames(); // FormPopups.methods.showDangerAlert(this.alert = "Platform has been deleted!");
 
       })["catch"](function (error) {// FormPopups.methods.showDangerAlert(this.alert = error);
       });
     },
     deleteGameCategory: function deleteGameCategory(game, category) {
-      var _this4 = this;
+      var _this5 = this;
 
       axios__WEBPACK_IMPORTED_MODULE_0___default()({
         method: "delete",
         url: this.categoryInGame_api + "/game/" + game.id + "/category/" + category.id
       }).then(function (response) {
-        _this4.loadGames(); // FormPopups.methods.showDangerAlert(this.alert = "Platform has been deleted!");
+        _this5.loadGames(); // FormPopups.methods.showDangerAlert(this.alert = "Platform has been deleted!");
 
       })["catch"](function (error) {// FormPopups.methods.showDangerAlert(this.alert = error);
       });
@@ -2299,18 +2320,17 @@ var _config_config_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__
       this.name = game.name;
       this.price = game.price;
     },
-    addCategoryFields: function addCategoryFields() {
+    addCategoryFields: function addCategoryFields(game) {
       var tag = document.createElement("div");
       tag.setAttribute("id", "category");
-      var select = document.createElement("select");
-      select.setAttribute("class", "form-control form-control-sm");
-      select.setAttribute("v-model", "category");
+      var itm = document.getElementById("category-option");
+      var cln = itm.cloneNode(true);
       var button = document.createElement("button");
       button.innerText = "✔";
       button.setAttribute("class", "btn btn-sm btn-secondary");
       tag.appendChild(button);
-      tag.appendChild(select);
-      var element = document.getElementById("categories");
+      tag.appendChild(cln);
+      var element = document.getElementById("game_" + game.id);
       element.appendChild(tag);
     },
     incCurrentPage: function incCurrentPage() {
@@ -3145,7 +3165,10 @@ var render = function() {
             _c("td", { staticClass: "text-center" }, [
               _c(
                 "div",
-                { attrs: { id: "categories" } },
+                {
+                  staticClass: "categories-in-game",
+                  attrs: { id: "game_" + game.id }
+                },
                 _vm._l(game.category, function(category) {
                   return _c(
                     "div",
@@ -3178,7 +3201,11 @@ var render = function() {
                   "button",
                   {
                     staticClass: "btn btn-sm btn-success",
-                    on: { click: _vm.addCategoryFields }
+                    on: {
+                      click: function($event) {
+                        return _vm.addCategoryFields(game)
+                      }
+                    }
                   },
                   [_vm._v("+")]
                 )
@@ -3217,6 +3244,44 @@ var render = function() {
         0
       )
     ]),
+    _vm._v(" "),
+    _c(
+      "select",
+      {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.category,
+            expression: "category"
+          }
+        ],
+        staticClass: "form-control form-control-sm",
+        attrs: { id: "category-option" },
+        on: {
+          change: function($event) {
+            var $$selectedVal = Array.prototype.filter
+              .call($event.target.options, function(o) {
+                return o.selected
+              })
+              .map(function(o) {
+                var val = "_value" in o ? o._value : o.value
+                return val
+              })
+            _vm.category = $event.target.multiple
+              ? $$selectedVal
+              : $$selectedVal[0]
+          }
+        }
+      },
+      _vm._l(_vm.categories, function(category) {
+        return _c("option", {
+          key: category.id,
+          domProps: { value: category.id, textContent: _vm._s(category.name) }
+        })
+      }),
+      0
+    ),
     _vm._v(" "),
     _c(
       "div",

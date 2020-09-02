@@ -35,14 +35,14 @@
                 <td class="text-center" v-text="game.name"></td>
                 <td class="text-center" v-text="game.price"></td>
                 <td class="text-center">
-                    <div id="categories">
+                    <div class="categories-in-game" :id="'game_' + game.id">
                         <div v-for="category in game.category" :key="category.id" class="category-in-game">
                             <p v-text="category.name"></p>
                             <button class="btn btn-sm btn-danger" @click="deleteGameCategory(game, category)">x</button>
                         </div>
                     </div>
                     <div class="add-category">
-                        <button class="btn btn-sm btn-success" @click="addCategoryFields">+</button>
+                        <button class="btn btn-sm btn-success" @click="addCategoryFields(game)">+</button>
                     </div>
                 </td>
                 <td class="text-right">
@@ -52,6 +52,10 @@
             </tr>
             </tbody>
         </table>
+
+        <select id="category-option" v-model="category" class="form-control form-control-sm">
+            <option v-for="category in categories" :key="category.id" v-bind:value="category.id" v-text="category.name"></option>
+        </select>
 
         <div class="row justify-content-center" id="game-page-btn">
             <div class="col-sm-6 text-center">
@@ -76,6 +80,7 @@ export default {
         return {
             game_api: apiJson[0]['game_api'],
             categoryInGame_api: apiJson[0]['categoryInGame_api'],
+            category_api: apiJson[0]['category_api'],
             id: '',
             name: '',
             price: '',
@@ -90,6 +95,7 @@ export default {
 
     mounted() {
         this.loadGames();
+        this.loadCategories();
     },
 
     methods: {
@@ -110,6 +116,23 @@ export default {
                     // FormPopups.methods.showDangerAlert(this.alert = error);
                 }
             );
+        },
+
+        loadCategories: function () {
+            this.categories = [];
+
+            axios({
+                method: "get",
+                url: this.category_api
+            })
+                .then( response => {
+                    for(let i = 0; i < response.data['data'].length; i++)
+                        this.categories.push(response.data['data'][i]);
+
+                }).
+            catch( error => {
+                console.log(error);
+            });
         },
 
         saveGame: function () {
@@ -186,23 +209,21 @@ export default {
             this.price = game.price;
         },
 
-        addCategoryFields: function (){
+        addCategoryFields: function (game){
             let tag = document.createElement("div");
             tag.setAttribute("id", "category")
 
-            let select = document.createElement("select");
-            select.setAttribute("class", "form-control form-control-sm");
-            select.setAttribute("v-model", "category");
+            let itm = document.getElementById("category-option");
+            let cln = itm.cloneNode(true);
 
             let button = document.createElement("button");
             button.innerText = "✔";
             button.setAttribute("class", "btn btn-sm btn-secondary")
 
             tag.appendChild(button);
-            tag.appendChild(select);
+            tag.appendChild(cln);
 
-
-            let element = document.getElementById("categories");
+            let element = document.getElementById("game_" + game.id);
             element.appendChild(tag);
         },
 

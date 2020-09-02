@@ -56,7 +56,7 @@ table{
     align-items: center;
 }
 
-#categories div{
+.categories-in-game div{
     display: flex;
     text-align: center;
     justify-content: flex-end;
@@ -64,6 +64,14 @@ table{
     margin-bottom: 5px;
 }
 
-#categories #category button{
+.categories-in-game #category button{
     margin-right: 5px;
+}
+
+#category-option{
+    display: none;
+}
+
+#category #category-option{
+    display: unset;
 }
